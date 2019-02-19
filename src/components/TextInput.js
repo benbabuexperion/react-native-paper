@@ -723,8 +723,9 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   inputOutlined: {
+    textAlignVertical: 'center',
     paddingTop: 20,
-    paddingBottom: 16,
+    paddingBottom: 24, 
     minHeight: 64,
   },
   inputFlatWithLabel: {
