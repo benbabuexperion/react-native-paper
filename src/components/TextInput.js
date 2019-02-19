@@ -51,78 +51,78 @@ type Props = React.ElementConfig<typeof NativeTextInput> & {|
    * In `outlined` mode, the background color of the label is derived from `colors.background` in theme or the `backgroundColor` style.
    */
   mode?: 'flat' | 'outlined',
-  /**
-   * If true, user won't be able to interact with the component.
-   */
-  disabled?: boolean,
-  /**
-   * The text to use for the floating label.
-   */
-  label?: string,
-  /**
-   * Placeholder for the input.
-   */
-  placeholder?: string,
-  /**
-   * Whether to style the TextInput with error style.
-   */
-  error?: boolean,
-  /**
-   * Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler.
-   */
-  onChangeText?: Function,
-  /**
-   * Selection color of the input
-   */
-  selectionColor?: string,
-  /**
-   * Underline color of the input.
-   */
-  underlineColor?: string,
-  /**
-   * Whether the input can have multiple lines.
-   */
-  multiline?: boolean,
-  /**
-   * The number of lines to show in the input (Android only).
-   */
-  numberOfLines?: number,
-  /**
-   * Callback that is called when the text input is focused.
-   */
-  onFocus?: () => mixed,
-  /**
-   * Callback that is called when the text input is blurred.
-   */
-  onBlur?: () => mixed,
-  /**
-   *
-   * Callback to render a custom input component such as `react-native-text-input-mask`
-   * instead of the default `TextInput` component from `react-native`.
-   *
-   * Example:
-   * ```js
-   * <TextInput
-   *   label="Phone number"
-   *   render={props =>
-   *     <TextInputMask
-   *       {...props}
-   *       mask="+[00] [000] [000] [000]"
-   *     />
-   *   }
-   * />
-   * ```
-   */
-  render: (props: RenderProps) => React.Node,
-  /**
-   * Value of the text input.
-   */
-  value?: string,
-  style?: any,
-  /**
-   * @optional
-   */
-  theme: Theme,
+    /**
+     * If true, user won't be able to interact with the component.
+     */
+    disabled ?: boolean,
+    /**
+     * The text to use for the floating label.
+     */
+    label ?: string,
+    /**
+     * Placeholder for the input.
+     */
+    placeholder ?: string,
+    /**
+     * Whether to style the TextInput with error style.
+     */
+    error ?: boolean,
+    /**
+     * Callback that is called when the text input's text changes. Changed text is passed as an argument to the callback handler.
+     */
+    onChangeText ?: Function,
+    /**
+     * Selection color of the input
+     */
+    selectionColor ?: string,
+    /**
+     * Underline color of the input.
+     */
+    underlineColor ?: string,
+    /**
+     * Whether the input can have multiple lines.
+     */
+    multiline ?: boolean,
+    /**
+     * The number of lines to show in the input (Android only).
+     */
+    numberOfLines ?: number,
+    /**
+     * Callback that is called when the text input is focused.
+     */
+    onFocus ?: () => mixed,
+    /**
+     * Callback that is called when the text input is blurred.
+     */
+    onBlur ?: () => mixed,
+    /**
+     *
+     * Callback to render a custom input component such as `react-native-text-input-mask`
+     * instead of the default `TextInput` component from `react-native`.
+     *
+     * Example:
+     * ```js
+     * <TextInput
+     *   label="Phone number"
+     *   render={props =>
+     *     <TextInputMask
+     *       {...props}
+     *       mask="+[00] [000] [000] [000]"
+     *     />
+     *   }
+     * />
+     * ```
+     */
+    render: (props: RenderProps) => React.Node,
+      /**
+       * Value of the text input.
+       */
+      value ?: string,
+      style ?: any,
+      /**
+       * @optional
+       */
+      theme: Theme,
 |};
 
 type State = {
@@ -425,13 +425,13 @@ class TextInput extends React.Component<Props, State> {
       containerStyle = {
         backgroundColor: theme.dark
           ? color(colors.background)
-              .lighten(0.24)
-              .rgb()
-              .string()
+            .lighten(0.24)
+            .rgb()
+            .string()
           : color(colors.background)
-              .darken(0.06)
-              .rgb()
-              .string(),
+            .darken(0.06)
+            .rgb()
+            .string(),
         borderTopLeftRadius: theme.roundness,
         borderTopRightRadius: theme.roundness,
       };
@@ -487,11 +487,11 @@ class TextInput extends React.Component<Props, State> {
             outputRange: [
               baseLabelTranslateX > 0
                 ? baseLabelTranslateX +
-                  labelHalfWidth / LABEL_PADDING_HORIZONTAL -
-                  RANDOM_VALUE_TO_CENTER_LABEL
+                labelHalfWidth / LABEL_PADDING_HORIZONTAL -
+                RANDOM_VALUE_TO_CENTER_LABEL
                 : baseLabelTranslateX -
-                  labelHalfWidth / LABEL_PADDING_HORIZONTAL +
-                  RANDOM_VALUE_TO_CENTER_LABEL,
+                labelHalfWidth / LABEL_PADDING_HORIZONTAL +
+                RANDOM_VALUE_TO_CENTER_LABEL,
               0,
             ],
           }),
@@ -602,7 +602,7 @@ class TextInput extends React.Component<Props, State> {
               style={[
                 styles.placeholder,
                 mode === 'outlined'
-                  ? styles.placeholderOutlined
+                  ? styles.placeholderOutlinedFocused
                   : styles.placeholderFlat,
                 labelStyle,
                 {
@@ -687,6 +687,9 @@ const styles = StyleSheet.create({
     top: 19,
   },
   placeholderOutlined: {
+    top: 17,
+  },
+  placeholderOutlinedFocused: {
     top: 25,
   },
   underline: {
